@@ -25,8 +25,8 @@ public class Server {
                defaultHeaders: [String: Any]
     
     //MARK: - Instance Methods
-    public init(urlString: String, headers: [String: Any] = [String: Any]()) {
-        self.url = URL(string: urlString)!
+    public init(url: URL, headers: [String: Any] = [String: Any]()) {
+        self.url = url
         self.defaultHeaders = headers
     }
     
