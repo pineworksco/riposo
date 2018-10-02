@@ -11,7 +11,13 @@ public extension URL {
     public static func stringFromParameters(parameters: [String: Any]) -> String {
         var parameterArray = [String]()
         for (key, value) in parameters {
-            parameterArray.append("\(key)=\(value)")
+            if let values = value as? [Any] {
+                for eachValue in values {
+                    parameterArray.append("\(key.replacingOccurrences(of: "[]", with: "").appending("[]"))=\(eachValue)")
+                }
+            } else {
+                parameterArray.append("\(key)=\(value)")
+            }
         }
         
         return parameterArray.joined(separator: "&")
@@ -22,7 +28,19 @@ public extension URL {
         let parameters = string.components(separatedBy: "&")
         for parameter in parameters {
             let parameterPieces = parameter.components(separatedBy: "=")
-            parsed[parameterPieces[0]] = parameterPieces[1]
+            var parameterKey = parameterPieces[0].replacingOccurrences(of: "%5B%5D", with: "").replacingOccurrences(of: "[]", with: "")
+            
+            if let existingParameter = parsed[parameterKey] {
+                if let existingParameterArray = existingParameter as? [Any] {
+                    var newParameterArray: [Any] = [parameterPieces[1]]
+                    newParameterArray.append(contentsOf: existingParameterArray)
+                    parsed[parameterKey] = newParameterArray
+                } else {
+                    parsed[parameterKey] = [existingParameter, parameterPieces[1]]
+                }
+            } else {
+                parsed[parameterKey] = parameterPieces[1]
+            }
         }
         return parsed
     }
