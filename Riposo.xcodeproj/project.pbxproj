@@ -24,7 +24,6 @@
 		8C44BF042163D5BB0096519F /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		8C44BF052163D5BB0096519F /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		8C44BF062163D5BB0096519F /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
-		8C44BF0D2163D7930096519F /* Riposo.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Riposo.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +42,6 @@
 			children = (
 				8C44BEF82163D5910096519F /* Riposo */,
 				8C44BEF72163D5910096519F /* Products */,
-				8C44BF0D2163D7930096519F /* Riposo.playground */,
 			);
 			sourceTree = "<group>";
 		};
