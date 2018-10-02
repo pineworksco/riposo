@@ -46,16 +46,11 @@ public extension URL {
     }
     
     public func appendingQueryParameters(parameters: [String: Any]) -> URL {
-        var mergedParameters = queryParameters
-        
-        for (parameterKey, parameterValue) in parameters {
-            mergedParameters.updateValue(parameterValue, forKey: parameterKey)
-        }
         if (parameters.count == 0) {
             return self
         }
         
-        return URL(string: "\(absoluteString.split(separator: "?")[0])?\(URL.stringFromParameters(parameters: mergedParameters))")!
+        return URL(string: "\(absoluteString.split(separator: "?")[0])?\(URL.stringFromParameters(parameters: queryParameters.merging(parameters) { (_, new) in new }))")!
     }
     
     mutating public func appendQueryParameters(parameters: [String: Any]) {
