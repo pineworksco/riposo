@@ -26,9 +26,29 @@ public class Server {
                defaultHeaders: [String: Any]
     
     //MARK: - Instance Methods
-    public init(url: URL, headers: [String: Any] = [String: Any]()) {
+    public init(_ url: URL, headers: [String: Any] = [String: Any]()) {
         self.url = url
         self.defaultHeaders = headers
+    }
+    
+    public func get(_ path: String? = nil, parameters: [String: Any]? = nil, headers: [String: Any]? = nil, completionHandler: @escaping (Response?) -> () = {(_: Response?) -> () in }) {
+        Server.get(url: url.appendingPathComponent(path ?? ""), parameters: parameters, headers: headers, completionHandler: completionHandler)
+    }
+    
+    public func post(_ path: String? = nil, parameters: [String: Any]? = nil, headers: [String: Any]? = nil, completionHandler: @escaping (Response?) -> () = {(_: Response?) -> () in }) {
+        Server.post(url: url.appendingPathComponent(path ?? ""), parameters: parameters, headers: headers, completionHandler: completionHandler)
+    }
+    
+    public func patch(_ path: String? = nil, parameters: [String: Any]? = nil, headers: [String: Any]? = nil, completionHandler: @escaping (Response?) -> () = {(_: Response?) -> () in }) {
+        Server.patch(url: url.appendingPathComponent(path ?? ""), parameters: parameters, headers: headers, completionHandler: completionHandler)
+    }
+    
+    public func put(_ path: String? = nil, parameters: [String: Any]? = nil, headers: [String: Any]? = nil, completionHandler: @escaping (Response?) -> () = {(_: Response?) -> () in }) {
+        Server.put(url: url.appendingPathComponent(path ?? ""), parameters: parameters, headers: headers, completionHandler: completionHandler)
+    }
+    
+    public func delete(_ path: String? = nil, parameters: [String: Any]? = nil, headers: [String: Any]? = nil, completionHandler: @escaping (Response?) -> () = {(_: Response?) -> () in }) {
+        Server.delete(url: url.appendingPathComponent(path ?? ""), parameters: parameters, headers: headers, completionHandler: completionHandler)
     }
     
     //MARK: - Utility Methods
@@ -37,7 +57,7 @@ public class Server {
         
         if let parameters = parameters {
             if (method == .get) {
-                request.url = request.url?.appendingQueryParameters(parameters: parameters)
+                request.url?.appendQueryParameters(parameters: parameters)
             } else {
                 do {
                     request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
@@ -54,22 +74,22 @@ public class Server {
         }
         
         Server.session.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print("Response Error: \(error)")
+            guard let httpResponse = response as? HTTPURLResponse else {
+                DispatchQueue.main.async {
+                    completionHandler(Response(code: 0, json: nil, headers: nil, error: error))
+                }
+                return
             }
-            
-            if let data = data, let httpResponse = response as? HTTPURLResponse {
-                var json: [String: Any]?
-                
+            var json: [String: Any]?
+            if let data = data {
                 do {
                     json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
                 } catch {
-                    print("JSON read error: \(error)")
+                    debugPrint("JSON read error: \(error)")
                 }
-                
-                DispatchQueue.main.async {
-                    completionHandler(Response(code: httpResponse.statusCode, json: json, headers: httpResponse.allHeaderFields as? [String : Any], error: error))
-                }
+            }
+            DispatchQueue.main.async {
+                completionHandler(Response(code: httpResponse.statusCode, json: json, headers: httpResponse.allHeaderFields as? [String : Any], error: error))
             }
         }.resume()
     }
