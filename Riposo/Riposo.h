@@ -2,7 +2,6 @@
 //  Riposo.h
 //  Riposo
 //
-//  Created by Anthony Colangelo on 10/2/18.
 //  Copyright © 2018 Dot First. All rights reserved.
 //
 

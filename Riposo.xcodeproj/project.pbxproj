@@ -8,12 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		8C44BEFB2163D5910096519F /* Riposo.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C44BEF92163D5910096519F /* Riposo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C44BF082163D5BB0096519F /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C44BF022163D5BB0096519F /* Status.swift */; };
+		8C44BF092163D5BB0096519F /* ServerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C44BF032163D5BB0096519F /* ServerDelegate.swift */; };
+		8C44BF0A2163D5BB0096519F /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C44BF042163D5BB0096519F /* Server.swift */; };
+		8C44BF0B2163D5BB0096519F /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C44BF052163D5BB0096519F /* URL.swift */; };
+		8C44BF0C2163D5BB0096519F /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C44BF062163D5BB0096519F /* Response.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8C44BEF62163D5910096519F /* Riposo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Riposo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C44BEF92163D5910096519F /* Riposo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Riposo.h; sourceTree = "<group>"; };
 		8C44BEFA2163D5910096519F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C44BF022163D5BB0096519F /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		8C44BF032163D5BB0096519F /* ServerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerDelegate.swift; sourceTree = "<group>"; };
+		8C44BF042163D5BB0096519F /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		8C44BF052163D5BB0096519F /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		8C44BF062163D5BB0096519F /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		8C44BF0D2163D7930096519F /* Riposo.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Riposo.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +43,7 @@
 			children = (
 				8C44BEF82163D5910096519F /* Riposo */,
 				8C44BEF72163D5910096519F /* Products */,
+				8C44BF0D2163D7930096519F /* Riposo.playground */,
 			);
 			sourceTree = "<group>";
 		};
@@ -46,6 +58,11 @@
 		8C44BEF82163D5910096519F /* Riposo */ = {
 			isa = PBXGroup;
 			children = (
+				8C44BF042163D5BB0096519F /* Server.swift */,
+				8C44BF032163D5BB0096519F /* ServerDelegate.swift */,
+				8C44BF062163D5BB0096519F /* Response.swift */,
+				8C44BF022163D5BB0096519F /* Status.swift */,
+				8C44BF052163D5BB0096519F /* URL.swift */,
 				8C44BEF92163D5910096519F /* Riposo.h */,
 				8C44BEFA2163D5910096519F /* Info.plist */,
 			);
@@ -95,6 +112,7 @@
 				TargetAttributes = {
 					8C44BEF52163D5910096519F = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -130,6 +148,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C44BF082163D5BB0096519F /* Status.swift in Sources */,
+				8C44BF0A2163D5BB0096519F /* Server.swift in Sources */,
+				8C44BF092163D5BB0096519F /* ServerDelegate.swift in Sources */,
+				8C44BF0B2163D5BB0096519F /* URL.swift in Sources */,
+				8C44BF0C2163D5BB0096519F /* Response.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +284,7 @@
 		8C44BEFF2163D5910096519F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -278,6 +302,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.dotfirst.Riposo;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -286,6 +311,7 @@
 		8C44BF002163D5910096519F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
