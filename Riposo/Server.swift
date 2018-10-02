@@ -11,6 +11,7 @@ import Foundation
 public enum HTTPMethod: String {
     case get = "GET",
          post = "POST",
+         patch = "PATCH",
          put = "PUT",
          delete = "DELETE"
 }
@@ -71,5 +72,25 @@ public class Server {
                 }
             }
         }.resume()
+    }
+    
+    public class func get(url: URL, parameters: [String: Any]?, headers: [String: Any]?, completionHandler: @escaping (Response?) -> () = {(_: Response?) -> () in }) {
+        request(method: .get, url: url, parameters: parameters, headers: headers, completionHandler: completionHandler)
+    }
+    
+    public class func post(url: URL, parameters: [String: Any]?, headers: [String: Any]?, completionHandler: @escaping (Response?) -> () = {(_: Response?) -> () in }) {
+        request(method: .post, url: url, parameters: parameters, headers: headers, completionHandler: completionHandler)
+    }
+    
+    public class func patch(url: URL, parameters: [String: Any]?, headers: [String: Any]?, completionHandler: @escaping (Response?) -> () = {(_: Response?) -> () in }) {
+        request(method: .patch, url: url, parameters: parameters, headers: headers, completionHandler: completionHandler)
+    }
+    
+    public class func put(url: URL, parameters: [String: Any]?, headers: [String: Any]?, completionHandler: @escaping (Response?) -> () = {(_: Response?) -> () in }) {
+        request(method: .put, url: url, parameters: parameters, headers: headers, completionHandler: completionHandler)
+    }
+    
+    public class func delete(url: URL, parameters: [String: Any]?, headers: [String: Any]?, completionHandler: @escaping (Response?) -> () = {(_: Response?) -> () in }) {
+        request(method: .delete, url: url, parameters: parameters, headers: headers, completionHandler: completionHandler)
     }
 }
