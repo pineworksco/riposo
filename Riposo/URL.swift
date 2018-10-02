@@ -27,8 +27,8 @@ public extension URL {
         var parsed = [String: Any]()
         let parameters = string.components(separatedBy: "&")
         for parameter in parameters {
-            let parameterPieces = parameter.components(separatedBy: "=")
-            var parameterKey = parameterPieces[0].replacingOccurrences(of: "%5B%5D", with: "").replacingOccurrences(of: "[]", with: "")
+            let parameterPieces = parameter.components(separatedBy: "="),
+                parameterKey = parameterPieces[0].replacingOccurrences(of: "%5B%5D", with: "").replacingOccurrences(of: "[]", with: "")
             
             if let existingParameter = parsed[parameterKey] {
                 if let existingParameterArray = existingParameter as? [Any] {
