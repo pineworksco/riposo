@@ -23,11 +23,13 @@ public class Server {
     
     //MARK: - Properties
     public var url: URL,
+               defaultParameters: [String: Any],
                defaultHeaders: [String: Any]
     
     //MARK: - Instance Methods
-    public init(_ url: URL, headers: [String: Any] = [String: Any]()) {
+    public init(_ url: URL, parameters: [String: Any] = [String: Any](), headers: [String: Any] = [String: Any]()) {
         self.url = url
+        self.defaultParameters = parameters
         self.defaultHeaders = headers
     }
     
