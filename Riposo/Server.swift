@@ -34,23 +34,23 @@ public class Server {
     }
     
     public func get(_ path: String? = nil, parameters: [String: Any]? = nil, headers: [String: Any]? = nil, completionHandler: @escaping (Response?) -> () = {(_: Response?) -> () in }) {
-        Server.get(url: url.appendingPathComponent(path ?? ""), parameters: parameters, headers: headers, completionHandler: completionHandler)
+        Server.get(url: url.appendingPathComponent(path ?? ""), parameters: defaultParameters.merging(parameters ?? [String: Any](), uniquingKeysWith:  { (_, new) in new }), headers: defaultHeaders.merging(headers ?? [String: Any](), uniquingKeysWith:  { (_, new) in new }), completionHandler: completionHandler)
     }
     
     public func post(_ path: String? = nil, parameters: [String: Any]? = nil, headers: [String: Any]? = nil, completionHandler: @escaping (Response?) -> () = {(_: Response?) -> () in }) {
-        Server.post(url: url.appendingPathComponent(path ?? ""), parameters: parameters, headers: headers, completionHandler: completionHandler)
+        Server.post(url: url.appendingPathComponent(path ?? ""), parameters: defaultParameters.merging(parameters ?? [String: Any](), uniquingKeysWith:  { (_, new) in new }), headers: defaultHeaders.merging(headers ?? [String: Any](), uniquingKeysWith:  { (_, new) in new }), completionHandler: completionHandler)
     }
     
     public func patch(_ path: String? = nil, parameters: [String: Any]? = nil, headers: [String: Any]? = nil, completionHandler: @escaping (Response?) -> () = {(_: Response?) -> () in }) {
-        Server.patch(url: url.appendingPathComponent(path ?? ""), parameters: parameters, headers: headers, completionHandler: completionHandler)
+        Server.patch(url: url.appendingPathComponent(path ?? ""), parameters: defaultParameters.merging(parameters ?? [String: Any](), uniquingKeysWith:  { (_, new) in new }), headers: defaultHeaders.merging(headers ?? [String: Any](), uniquingKeysWith:  { (_, new) in new }), completionHandler: completionHandler)
     }
     
     public func put(_ path: String? = nil, parameters: [String: Any]? = nil, headers: [String: Any]? = nil, completionHandler: @escaping (Response?) -> () = {(_: Response?) -> () in }) {
-        Server.put(url: url.appendingPathComponent(path ?? ""), parameters: parameters, headers: headers, completionHandler: completionHandler)
+        Server.put(url: url.appendingPathComponent(path ?? ""), parameters: defaultParameters.merging(parameters ?? [String: Any](), uniquingKeysWith:  { (_, new) in new }), headers: defaultHeaders.merging(headers ?? [String: Any](), uniquingKeysWith:  { (_, new) in new }), completionHandler: completionHandler)
     }
     
     public func delete(_ path: String? = nil, parameters: [String: Any]? = nil, headers: [String: Any]? = nil, completionHandler: @escaping (Response?) -> () = {(_: Response?) -> () in }) {
-        Server.delete(url: url.appendingPathComponent(path ?? ""), parameters: parameters, headers: headers, completionHandler: completionHandler)
+        Server.delete(url: url.appendingPathComponent(path ?? ""), parameters: defaultParameters.merging(parameters ?? [String: Any](), uniquingKeysWith:  { (_, new) in new }), headers: defaultHeaders.merging(headers ?? [String: Any](), uniquingKeysWith:  { (_, new) in new }), completionHandler: completionHandler)
     }
     
     //MARK: - Utility Methods
