@@ -9,7 +9,6 @@ import Foundation
 
 //MARK: - Server
 public class Server {
-    public typealias ResponseHandler = (Response?) -> Void
     
     public enum RequestMethod: String {
         case get = "GET",

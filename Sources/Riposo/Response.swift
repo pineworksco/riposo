@@ -7,8 +7,9 @@
 
 import Foundation
 
+public typealias ResponseHandler = (Response?) -> Void
+
 public struct Response {
-    
     //MARK: Properties
     public private(set) var status: Status,
                             data: Data?,
